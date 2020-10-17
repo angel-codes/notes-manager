@@ -1,11 +1,26 @@
 import React from 'react';
+import { motion, useCycle } from 'framer-motion';
+
+// Components
+import SelectColor from './SelectColor';
 
 const Sidebar = () => {
+  const [isOpen, toggleOpen] = useCycle(false, true);
+
   return (
     <aside className="pt-8 px-5 min-h-screen text-center border-r-2 border-gray-100">
       <span className="text-primary font-semibold">NM</span>
-      <div className="flex flex-col mt-10">
-        <button className="flex items-center justify-center w-10 h-10 text-center bg-primary rounded-full">
+      <motion.div
+        initial={false}
+        animate={isOpen ? 'open' : 'closed'}
+        className="flex flex-col mt-10"
+      >
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={toggleOpen}
+          className="flex items-center justify-center w-10 h-10 text-center bg-primary rounded-full focus:outline-none"
+        >
           <svg
             className="w-6 h-6 text-white"
             fill="none"
@@ -20,19 +35,9 @@ const Sidebar = () => {
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             ></path>
           </svg>
-        </button>
-        <ul className="flex flex-col items-center justify-center mt-6">
-          <li className="mb-2">
-            <button className="w-6 h-6 bg-orange-500 rounded-full"></button>
-          </li>
-          <li className="mb-2">
-            <button className="w-6 h-6 bg-pink-500 rounded-full"></button>
-          </li>
-          <li className="mb-2">
-            <button className="w-6 h-6 bg-red-500 rounded-full"></button>
-          </li>
-        </ul>
-      </div>
+        </motion.button>
+        <SelectColor />
+      </motion.div>
     </aside>
   );
 };
