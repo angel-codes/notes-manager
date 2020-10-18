@@ -8,6 +8,7 @@ export const NotesContext = createContext();
 
 const NotesProvider = props => {
   const initialState = {
+    message: {},
     active: {},
     notes: []
   };
@@ -15,7 +16,13 @@ const NotesProvider = props => {
   const [state, dispatch] = useReducer(NotesReducer, initialState);
 
   return (
-    <NotesContext.Provider value={{ active: state.active, notes: state.notes }}>
+    <NotesContext.Provider
+      value={{
+        message: state.message,
+        active: state.active,
+        notes: state.notes
+      }}
+    >
       {props.children}
     </NotesContext.Provider>
   );

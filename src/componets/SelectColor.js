@@ -32,7 +32,14 @@ const itemVariants = {
   }
 };
 
-const SelectColor = () => {
+const SelectColor = ({ setNote, note }) => {
+  const handleChange = e => {
+    setNote({
+      ...note,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div className="flex items-center justify-between mt-6 w-full">
       <motion.ul
@@ -48,6 +55,7 @@ const SelectColor = () => {
             type="radio"
             name="color"
             value="red"
+            onChange={handleChange}
             className="form-radio w-6 h-6 text-red-500 border-2 border-red-500 rounded-full focus:outline-none"
           />
         </motion.li>
@@ -61,6 +69,7 @@ const SelectColor = () => {
             type="radio"
             name="color"
             value="blue"
+            onChange={handleChange}
             className="form-radio w-6 h-6 text-blue-500 border-2 border-blue-500 rounded-full focus:outline-none"
           />
         </motion.li>
@@ -74,6 +83,7 @@ const SelectColor = () => {
             type="radio"
             name="color"
             value="orange"
+            onChange={handleChange}
             className="form-radio w-6 h-6 text-orange-500 border-2 border-orange-500 rounded-full focus:outline-none"
           />
         </motion.li>
@@ -87,6 +97,7 @@ const SelectColor = () => {
             type="radio"
             name="color"
             value="pink"
+            onChange={handleChange}
             className="form-radio w-6 h-6 text-pink-500 border-2 border-pink-500 rounded-full focus:outline-none"
           />
         </motion.li>
@@ -99,6 +110,7 @@ const SelectColor = () => {
             type="radio"
             name="color"
             value="teal"
+            onChange={handleChange}
             className="form-radio w-6 h-6 text-teal-500 border-2 border-teal-500 rounded-full focus:outline-none"
           />
         </motion.li>

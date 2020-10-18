@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
 
 // Components
@@ -6,6 +6,36 @@ import SelectColor from './SelectColor';
 
 const Sidebar = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
+  const [note, setNote] = useState({
+    content: '',
+    color: ''
+  });
+
+  const handleChange = e => {
+    setNote({
+      ...note,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    // Validation
+    if (
+      note.content === '' ||
+      note.content === null ||
+      note.color === '' ||
+      note.color === null
+    ) {
+      // show message in the ui
+      return;
+    }
+
+    // create note
+
+    // restart form
+  };
 
   return (
     <aside className="col-span-1 pt-8 px-5 min-h-screen text-center border-r-2 border-gray-100">
@@ -23,7 +53,7 @@ const Sidebar = () => {
         >
           {!isOpen ? 'Create Note' : 'Cancel'}
         </motion.button>
-        <div className="w-full">
+        <form onSubmit={handleSubmit} className="w-full">
           <motion.textarea
             variants={{
               open: {
@@ -45,11 +75,13 @@ const Sidebar = () => {
                 }
               }
             }}
+            name="content"
+            onChange={handleChange}
             className="mt-10 p-1 w-full border border-gray-400 rounded-lg focus:outline-none transition-colors duration-300 ease-in-out"
             rows={10}
           />
-          <SelectColor />
-        </div>
+          <SelectColor setNote={setNote} note={note} />
+        </form>
       </motion.div>
     </aside>
   );
