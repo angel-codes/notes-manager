@@ -10,7 +10,7 @@ import NotesContainer from './componets/NotesContainer';
 function App() {
   return (
     <NotesProvider>
-      <div className="flex min-h-screen">
+      <div className="grid grid-cols-6 min-h-screen">
         <Sidebar />
         <NotesContainer />
       </div>

@@ -8,8 +8,8 @@ const Sidebar = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
-    <aside className="pt-8 px-5 min-h-screen text-center border-r-2 border-gray-100">
-      <span className="text-primary font-semibold">NM</span>
+    <aside className="col-span-1 pt-8 px-5 min-h-screen text-center border-r-2 border-gray-100">
+      <span className="text-primary font-semibold">Notes Manager</span>
       <motion.div
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
@@ -19,24 +19,37 @@ const Sidebar = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={toggleOpen}
-          className="flex items-center justify-center w-10 h-10 text-center bg-primary rounded-full focus:outline-none"
+          className="block py-2 w-full text-center text-white font-semibold bg-primary rounded-full focus:outline-none"
         >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            ></path>
-          </svg>
+          {!isOpen ? 'Create Note' : 'Cancel'}
         </motion.button>
-        <SelectColor />
+        <div className="w-full">
+          <motion.textarea
+            variants={{
+              open: {
+                y: 0,
+                opacity: 1,
+                cursor: 'text',
+                zIndex: 10,
+                transition: {
+                  y: { stiffness: 1000, velocity: 100 }
+                }
+              },
+              closed: {
+                y: 50,
+                opacity: 0,
+                cursor: 'default',
+                zIndex: -40,
+                transition: {
+                  y: { stiffness: 1000 }
+                }
+              }
+            }}
+            className="mt-10 p-1 w-full border border-gray-400 rounded-lg focus:outline-none transition-colors duration-300 ease-in-out"
+            rows={10}
+          />
+          <SelectColor />
+        </div>
       </motion.div>
     </aside>
   );
