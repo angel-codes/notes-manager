@@ -44,7 +44,12 @@ const SelectColor = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <button className="w-6 h-6 bg-red-500 rounded-full focus:outline-none"></button>
+          <input
+            type="radio"
+            name="color"
+            value="red"
+            className="form-radio w-6 h-6 text-red-500 border-2 border-red-500 rounded-full focus:outline-none"
+          />
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -52,7 +57,12 @@ const SelectColor = () => {
           whileTap={{ scale: 0.9 }}
           className="ml-2"
         >
-          <button className="w-6 h-6 bg-blue-500 rounded-full focus:outline-none"></button>
+          <input
+            type="radio"
+            name="color"
+            value="blue"
+            className="form-radio w-6 h-6 text-blue-500 border-2 border-blue-500 rounded-full focus:outline-none"
+          />
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -60,7 +70,12 @@ const SelectColor = () => {
           whileTap={{ scale: 0.9 }}
           className="ml-2 mr-2"
         >
-          <button className="w-6 h-6 bg-orange-500 rounded-full focus:outline-none"></button>
+          <input
+            type="radio"
+            name="color"
+            value="orange"
+            className="form-radio w-6 h-6 text-orange-500 border-2 border-orange-500 rounded-full focus:outline-none"
+          />
         </motion.li>
         <motion.li
           variants={itemVariants}
@@ -68,14 +83,24 @@ const SelectColor = () => {
           whileTap={{ scale: 0.9 }}
           className="mr-2"
         >
-          <button className="w-6 h-6 bg-teal-500 rounded-full focus:outline-none"></button>
+          <input
+            type="radio"
+            name="color"
+            value="pink"
+            className="form-radio w-6 h-6 text-pink-500 border-2 border-pink-500 rounded-full focus:outline-none"
+          />
         </motion.li>
         <motion.li
           variants={itemVariants}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <button className="w-6 h-6 bg-pink-500 rounded-full focus:outline-none"></button>
+          <input
+            type="radio"
+            name="color"
+            value="teal"
+            className="form-radio w-6 h-6 text-teal-500 border-2 border-teal-500 rounded-full focus:outline-none"
+          />
         </motion.li>
       </motion.ul>
       <div>
