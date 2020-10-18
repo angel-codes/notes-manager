@@ -1,5 +1,5 @@
 // Types
-import { CLEAR_MESSAGE, CREATE_MESSAGE } from '../constants';
+import { CLEAR_MESSAGE, CREATE_MESSAGE, CREATE_NOTE } from '../constants';
 
 export default (state, action) => {
   switch (action.type) {
@@ -15,6 +15,11 @@ export default (state, action) => {
       return {
         ...state,
         message: null
+      };
+    case CREATE_NOTE:
+      return {
+        ...state,
+        notes: [...state.notes, { ...action.payload, date: Date.now() }]
       };
     default:
       return state;

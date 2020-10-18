@@ -16,7 +16,7 @@ const Sidebar = () => {
 
   // access to the context
   const NotesState = useContext(NotesContext);
-  const { fnSetMessage } = NotesState;
+  const { fnSetMessage, fnCreateNote } = NotesState;
 
   // Get data of the textarea
   const handleChange = e => {
@@ -42,6 +42,7 @@ const Sidebar = () => {
     }
 
     // create note
+    fnCreateNote(note);
 
     // restart form
   };

@@ -3,7 +3,7 @@ import React, { createContext, useReducer } from 'react';
 // Reducer
 import NotesReducer from './NotesReducer';
 // Types
-import { CLEAR_MESSAGE, CREATE_MESSAGE } from '../constants';
+import { CLEAR_MESSAGE, CREATE_MESSAGE, CREATE_NOTE } from '../constants';
 // Context
 export const NotesContext = createContext();
 
@@ -16,6 +16,7 @@ const NotesProvider = props => {
 
   const [state, dispatch] = useReducer(NotesReducer, initialState);
 
+  // create a message for alerts
   const fnSetMessage = (body, type) => {
     dispatch({
       type: CREATE_MESSAGE,
@@ -27,9 +28,18 @@ const NotesProvider = props => {
     setTimeout(() => fnClearMessage(), 2000);
   };
 
+  // clear the message
   const fnClearMessage = () => {
     dispatch({
       type: CLEAR_MESSAGE
+    });
+  };
+
+  // create note
+  const fnCreateNote = note => {
+    dispatch({
+      type: CREATE_NOTE,
+      payload: note
     });
   };
 
@@ -41,7 +51,8 @@ const NotesProvider = props => {
         active: state.active,
         notes: state.notes,
         // Functions
-        fnSetMessage
+        fnSetMessage,
+        fnCreateNote
       }}
     >
       {props.children}
