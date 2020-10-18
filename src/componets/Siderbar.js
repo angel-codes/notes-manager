@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
 
+// Context
+import { NotesContext } from '../context/NotesProvider';
 // Components
 import SelectColor from './SelectColor';
 
 const Sidebar = () => {
+  // local state
   const [isOpen, toggleOpen] = useCycle(false, true);
   const [note, setNote] = useState({
     content: '',
     color: ''
   });
 
+  // access to the context
+  const NotesState = useContext(NotesContext);
+  const { fnSetMessage } = NotesState;
+
+  // Get data of the textarea
   const handleChange = e => {
     setNote({
       ...note,
@@ -28,7 +36,8 @@ const Sidebar = () => {
       note.color === '' ||
       note.color === null
     ) {
-      // show message in the ui
+      // set message in the ui
+      fnSetMessage('Write the content of the note and select a color', 'error');
       return;
     }
 

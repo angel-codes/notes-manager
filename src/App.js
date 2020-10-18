@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // Context
 import NotesProvider from './context/NotesProvider';
 
+// Containers
+import Main from './containers/Main';
 // Components
 import Sidebar from './componets/Siderbar';
 import NotesContainer from './componets/NotesContainer';
@@ -10,10 +12,10 @@ import NotesContainer from './componets/NotesContainer';
 function App() {
   return (
     <NotesProvider>
-      <div className="grid grid-cols-6 min-h-screen">
+      <Main>
         <Sidebar />
         <NotesContainer />
-      </div>
+      </Main>
     </NotesProvider>
   );
 }
