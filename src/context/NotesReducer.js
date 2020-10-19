@@ -1,7 +1,12 @@
 import { v4 } from 'uuid';
 
 // Types
-import { CLEAR_MESSAGE, CREATE_MESSAGE, CREATE_NOTE } from '../constants';
+import {
+  CLEAR_MESSAGE,
+  CREATE_MESSAGE,
+  CREATE_NOTE,
+  REMOVE_NOTE
+} from '../constants';
 
 export default (state, action) => {
   switch (action.type) {
@@ -25,6 +30,11 @@ export default (state, action) => {
           ...state.notes,
           { ...action.payload, date: Date.now(), id: v4() }
         ]
+      };
+    case REMOVE_NOTE:
+      return {
+        ...state,
+        notes: state.notes.filter(note => note.id !== action.payload)
       };
     default:
       return state;

@@ -3,7 +3,12 @@ import React, { createContext, useReducer } from 'react';
 // Reducer
 import NotesReducer from './NotesReducer';
 // Types
-import { CLEAR_MESSAGE, CREATE_MESSAGE, CREATE_NOTE } from '../constants';
+import {
+  CLEAR_MESSAGE,
+  CREATE_MESSAGE,
+  CREATE_NOTE,
+  REMOVE_NOTE
+} from '../constants';
 // Context
 export const NotesContext = createContext();
 
@@ -43,6 +48,14 @@ const NotesProvider = props => {
     });
   };
 
+  // remove note
+  const fnRemoveNote = id => {
+    dispatch({
+      type: REMOVE_NOTE,
+      payload: id
+    });
+  };
+
   return (
     <NotesContext.Provider
       value={{
@@ -52,7 +65,8 @@ const NotesProvider = props => {
         notes: state.notes,
         // Functions
         fnSetMessage,
-        fnCreateNote
+        fnCreateNote,
+        fnRemoveNote
       }}
     >
       {props.children}
