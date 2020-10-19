@@ -45,6 +45,10 @@ const Sidebar = () => {
     fnCreateNote(note);
 
     // restart form
+    setNote({
+      content: '',
+      color: ''
+    });
   };
 
   return (
@@ -87,6 +91,7 @@ const Sidebar = () => {
             }}
             name="content"
             onChange={handleChange}
+            value={note.content}
             className="mt-10 p-1 w-full border border-gray-400 rounded-lg focus:outline-none transition-colors duration-300 ease-in-out"
             rows={10}
           />

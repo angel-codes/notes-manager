@@ -55,6 +55,7 @@ const SelectColor = ({ setNote, note }) => {
             type="radio"
             name="color"
             value="red"
+            checked={note.color === 'red' ? true : false}
             onChange={handleChange}
             className="form-radio w-6 h-6 text-red-500 border-2 border-red-500 rounded-full focus:outline-none"
           />
@@ -69,6 +70,7 @@ const SelectColor = ({ setNote, note }) => {
             type="radio"
             name="color"
             value="blue"
+            checked={note.color === 'blue' ? true : false}
             onChange={handleChange}
             className="form-radio w-6 h-6 text-blue-500 border-2 border-blue-500 rounded-full focus:outline-none"
           />
@@ -83,6 +85,7 @@ const SelectColor = ({ setNote, note }) => {
             type="radio"
             name="color"
             value="orange"
+            checked={note.color === 'orange' ? true : false}
             onChange={handleChange}
             className="form-radio w-6 h-6 text-orange-500 border-2 border-orange-500 rounded-full focus:outline-none"
           />
@@ -97,6 +100,7 @@ const SelectColor = ({ setNote, note }) => {
             type="radio"
             name="color"
             value="pink"
+            checked={note.color === 'pink' ? true : false}
             onChange={handleChange}
             className="form-radio w-6 h-6 text-pink-500 border-2 border-pink-500 rounded-full focus:outline-none"
           />
