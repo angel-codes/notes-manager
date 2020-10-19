@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Note = () => {
+const Note = ({ note }) => {
+  const { content, color, date } = note;
+
   return (
-    <li className="flex flex-col p-4 h-56 text-primary font-medium bg-orange-400 rounded-xl shadow-md">
-      <div className="mb-auto">Hello World!</div>
+    <li
+      className={`flex flex-col p-4 h-56 text-primary font-medium bg-${color}-400 rounded-xl shadow-md`}
+    >
+      <div className="mb-auto">{content}</div>
       <div className="flex items-center justify-between">
         <p className="font-normal">Oct 12, 2020</p>
         <button className="flex items-center justify-center w-8 h-8 bg-primary rounded-full">
@@ -25,6 +30,10 @@ const Note = () => {
       </div>
     </li>
   );
+};
+
+Note.propTypes = {
+  note: PropTypes.object.isRequired
 };
 
 export default Note;
