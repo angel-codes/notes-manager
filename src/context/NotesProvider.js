@@ -95,7 +95,8 @@ const NotesProvider = props => {
         fnCreateNote,
         fnRemoveNote,
         fnUpdateNote,
-        fnSetActiveNote
+        fnSetActiveNote,
+        fnClearActiveNote
       }}
     >
       {props.children}

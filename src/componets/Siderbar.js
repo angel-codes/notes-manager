@@ -16,7 +16,13 @@ const Sidebar = () => {
 
   // access to the context
   const NotesState = useContext(NotesContext);
-  const { fnSetMessage, fnCreateNote, fnUpdateNote, active } = NotesState;
+  const {
+    fnSetMessage,
+    fnCreateNote,
+    fnUpdateNote,
+    fnClearActiveNote,
+    active
+  } = NotesState;
 
   // useEffect to set active note in the values in the state
   useEffect(() => {
@@ -30,6 +36,20 @@ const Sidebar = () => {
       }
     }
   }, [active]);
+
+  // clear / close the form
+  const handleToggle = () => {
+    if (isOpen && active) {
+      toggleOpen();
+      fnClearActiveNote();
+      setNote({
+        content: '',
+        color: ''
+      });
+    } else {
+      toggleOpen();
+    }
+  };
 
   // Get data of the textarea
   const handleChange = e => {
@@ -83,7 +103,7 @@ const Sidebar = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={toggleOpen}
+          onClick={handleToggle}
           className="block py-2 w-full text-center text-white font-semibold bg-primary rounded-full focus:outline-none"
         >
           {!isOpen ? 'Create Note' : 'Cancel'}
