@@ -15,6 +15,7 @@
     "prettier-plugin-tailwind": "^2.1.9",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-markdown": "^5.0.0",
     "react-scripts": "3.4.3",
     "tailwindcss": "^1.9.1"
   },
