@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 // Context
 import NotesProvider from './context/NotesProvider';

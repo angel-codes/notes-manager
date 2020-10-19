@@ -17,7 +17,7 @@ const NotesContainer = () => {
         <ul className="grid gap-6 grid-cols-4">
           <AnimatePresence initial={false}>
             {notes.map(note => (
-              <Note note={note} />
+              <Note key={note.id} note={note} />
             ))}
           </AnimatePresence>
         </ul>

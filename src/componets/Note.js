@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 
 const Note = ({ note }) => {
   const { content, color, date } = note;
@@ -13,7 +14,9 @@ const Note = ({ note }) => {
       exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
       className={`flex flex-col p-4 h-56 text-primary font-medium bg-${color}-400 rounded-xl shadow-md`}
     >
-      <div className="mb-auto">{content}</div>
+      <div className="prose mb-auto">
+        <ReactMarkdown source={content} />
+      </div>
       <div className="flex items-center justify-between">
         <p className="font-normal">Oct 12, 2020</p>
         <button className="flex items-center justify-center w-8 h-8 bg-primary rounded-full">

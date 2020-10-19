@@ -1,3 +1,5 @@
+import { v4 } from 'uuid';
+
 // Types
 import { CLEAR_MESSAGE, CREATE_MESSAGE, CREATE_NOTE } from '../constants';
 
@@ -19,7 +21,10 @@ export default (state, action) => {
     case CREATE_NOTE:
       return {
         ...state,
-        notes: [...state.notes, { ...action.payload, date: Date.now() }]
+        notes: [
+          ...state.notes,
+          { ...action.payload, date: Date.now(), id: v4() }
+        ]
       };
     default:
       return state;
