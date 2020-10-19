@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import React, { useContext } from 'react';
 
 // Context
@@ -14,9 +15,11 @@ const NotesContainer = () => {
       <h1 className="text-primary text-5xl font-bold">Notes</h1>
       <div className="mt-12">
         <ul className="grid gap-6 grid-cols-4">
-          {notes.map(note => (
-            <Note note={note} />
-          ))}
+          <AnimatePresence initial={false}>
+            {notes.map(note => (
+              <Note note={note} />
+            ))}
+          </AnimatePresence>
         </ul>
       </div>
     </main>

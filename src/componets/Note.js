@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 const Note = ({ note }) => {
   const { content, color, date } = note;
 
   return (
-    <li
+    <motion.li
+      positionTransition
+      initial={{ opacity: 0, y: 50, scale: 0.3 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
       className={`flex flex-col p-4 h-56 text-primary font-medium bg-${color}-400 rounded-xl shadow-md`}
     >
       <div className="mb-auto">{content}</div>
@@ -28,7 +33,7 @@ const Note = ({ note }) => {
           </svg>
         </button>
       </div>
-    </li>
+    </motion.li>
   );
 };
 
