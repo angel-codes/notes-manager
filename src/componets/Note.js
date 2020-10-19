@@ -13,8 +13,14 @@ const Note = ({ note }) => {
 
   // access to the context
   const NotesState = useContext(NotesContext);
-  const { fnRemoveNote } = NotesState;
+  const { fnRemoveNote, fnSetActiveNote } = NotesState;
 
+  // set an active note
+  const handleActive = note => {
+    fnSetActiveNote(note);
+  };
+
+  // remove the note
   const handleRemove = id => {
     fnRemoveNote(id);
   };
@@ -33,7 +39,10 @@ const Note = ({ note }) => {
       <div className="flex items-center justify-between">
         <p className="font-normal">{moment(Number(date)).format('ll')}</p>
         <div className="flex items-center">
-          <button className="flex items-center justify-center mr-2 w-8 h-8 bg-primary rounded-full">
+          <button
+            onClick={() => handleActive(note)}
+            className="flex items-center justify-center mr-2 w-8 h-8 bg-primary rounded-full"
+          >
             <svg
               className="w-4 h-4 text-white"
               fill="none"

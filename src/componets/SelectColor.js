@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
 const variants = {
@@ -33,6 +34,7 @@ const itemVariants = {
 };
 
 const SelectColor = ({ setNote, note }) => {
+  // get data from input radios
   const handleChange = e => {
     setNote({
       ...note,
@@ -144,6 +146,11 @@ const SelectColor = ({ setNote, note }) => {
       </div>
     </div>
   );
+};
+
+SelectColor.propTypes = {
+  setNote: PropTypes.func.isRequired,
+  note: PropTypes.object.isRequired
 };
 
 export default SelectColor;

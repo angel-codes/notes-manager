@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
 
 // Context
@@ -16,7 +16,20 @@ const Sidebar = () => {
 
   // access to the context
   const NotesState = useContext(NotesContext);
-  const { fnSetMessage, fnCreateNote } = NotesState;
+  const { fnSetMessage, fnCreateNote, fnUpdateNote, active } = NotesState;
+
+  // useEffect to set active note in the values in the state
+  useEffect(() => {
+    if (active !== null) {
+      setNote({
+        ...active
+      });
+
+      if (!isOpen) {
+        toggleOpen();
+      }
+    }
+  }, [active]);
 
   // Get data of the textarea
   const handleChange = e => {
@@ -26,6 +39,7 @@ const Sidebar = () => {
     });
   };
 
+  // Create new note
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -41,10 +55,17 @@ const Sidebar = () => {
       return;
     }
 
-    // create note
-    fnCreateNote(note);
+    // detect if the user is creating or updating
+    if (active) {
+      // update note
+      fnUpdateNote(note);
+    } else {
+      // create note
+      fnCreateNote(note);
+    }
 
     // restart form
+    toggleOpen(); // close the form
     setNote({
       content: '',
       color: ''

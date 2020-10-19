@@ -4,10 +4,13 @@ import React, { createContext, useReducer } from 'react';
 import NotesReducer from './NotesReducer';
 // Types
 import {
+  CLEAR_ACTIVE_NOTE,
   CLEAR_MESSAGE,
   CREATE_MESSAGE,
   CREATE_NOTE,
-  REMOVE_NOTE
+  REMOVE_NOTE,
+  SET_ACTIVE_NOTE,
+  UPDATE_NOTE
 } from '../constants';
 // Context
 export const NotesContext = createContext();
@@ -56,6 +59,30 @@ const NotesProvider = props => {
     });
   };
 
+  // update note
+  const fnUpdateNote = note => {
+    dispatch({
+      type: UPDATE_NOTE,
+      payload: note
+    });
+    fnClearActiveNote();
+  };
+
+  // set active note
+  const fnSetActiveNote = note => {
+    dispatch({
+      type: SET_ACTIVE_NOTE,
+      payload: note
+    });
+  };
+
+  // clear active note
+  const fnClearActiveNote = () => {
+    dispatch({
+      type: CLEAR_ACTIVE_NOTE
+    });
+  };
+
   return (
     <NotesContext.Provider
       value={{
@@ -66,7 +93,9 @@ const NotesProvider = props => {
         // Functions
         fnSetMessage,
         fnCreateNote,
-        fnRemoveNote
+        fnRemoveNote,
+        fnUpdateNote,
+        fnSetActiveNote
       }}
     >
       {props.children}
