@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import moment from 'moment';
 
 const Note = ({ note }) => {
   const { content, color, date } = note;
@@ -18,7 +19,7 @@ const Note = ({ note }) => {
         <ReactMarkdown source={content} />
       </div>
       <div className="flex items-center justify-between">
-        <p className="font-normal">Oct 12, 2020</p>
+        <p className="font-normal">{moment(Number(date)).format('ll')}</p>
         <button className="flex items-center justify-center w-8 h-8 bg-primary rounded-full">
           <svg
             className="w-4 h-4 text-white"
